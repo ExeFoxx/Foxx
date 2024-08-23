@@ -1,234 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме - Andriy Bodnar</title>
+    <title>Resume - Andriy Bodnar</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.webp') }}" type="image/webp">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Общие стили остаются без изменений */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background: url('https://freecodingtools.org/static/images/articles/how-to-obfuscate-python-code/Python%20Banner%203.webp') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        header {
-            background: rgba(51, 51, 51, 0.8);
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo {
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-
-        .logo span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            letter-spacing: -2px;
-        }
-
-        .snake {
-            position: absolute;
-            bottom: 10%;
-            left: -100px;
-            width: 100px;
-            height: 50px;
-            background-image: url('https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif');
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: moveSnake 60s linear infinite;
-        }
-
-        @keyframes moveSnake {
-            0% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            95% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100vw);
-                opacity: 0;
-            }
-        }
-
-        nav {
-            margin: 20px 0;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        section {
-            padding: 20px;
-            margin: 10px;
-            background: transparent;
-            display: none;
-            color: #fff;
-            text-align: left;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: rgba(51, 51, 51, 0.8);
-            color: white;
-            position: relative;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .button {
-            padding: 10px 15px;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-            width: auto;
-            background-color: #007FFF;
-        }
-
-        .button:hover {
-            background-color: #FFD700;
-        }
-
-        .social-buttons {
-            margin-top: 15px;
-        }
-
-        .social-buttons a {
-            margin: 0 10px;
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Новый стиль для виджета навыков */
-        .skill-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .skill {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px;
-            display: flex;
-            align-items: center;
-            width: calc(30% - 20px);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .skill:hover {
-            transform: scale(1.05);
-        }
-
-        .skill-icon {
-            font-size: 40px;
-            margin-right: 15px;
-            color: #FFD700;
-        }
-
-        .progress {
-            background-color: #007FFF;
-            border-radius: 5px;
-            height: 10px;
-            position: absolute;
-            bottom: 10px;
-            left: 15px;
-            width: 0; /* Начальная ширина 0 */
-            transition: width 0.1s ease; /* Быстрая анимация при изменении ширины */
-        }
-
-        /* Новые стили для опыта работы */
-        .experience-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* Расстояние между карточками */
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px); /* Эффект поднятия карточки */
-        }
-
-        .card h3 {
-            margin: 0 0 10px;
-            color: #FFD700;
-        }
-
-        .card ul {
-            margin: 0;
-            padding: 0;
-            list-style-type: circle; /* Используем кружки для списка */
-        }
-
-        @media (max-width: 600px) {
-            nav ul {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 0;
-                margin: 0;
-            }
-
-            nav ul li {
-                flex: 1;
-                margin: 5px;
-            }
-
-            .button {
-                width: 100%;
-            }
-
-            section {
-                padding: 10px;
-            }
-
-            .skill {
-                width: calc(100% - 20px);
-            }
-
-            .experience-container, .about-container {
-                gap: 10px; /* Расстояние между карточками "О себе" */
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -236,55 +14,58 @@
             <span>A</span><span>n</span><span>d</span><span>r</span><span>i</span><span>y</span>
             <span>B</span><span>o</span><span>d</span><span>n</span><span>a</span><span>r</span>
         </div>
-
         <div class="snake"></div>
-
         <p>Backend developer | Python, Flask, JavaScript</p>
     </header>
 
     <nav>
         <ul>
-            <li><button class="button" onclick="toggleSection('about')">О себе</button></li>
-            <li><button class="button" onclick="toggleSection('experience')">Опыт работы</button></li>
-            <li><button class="button" onclick="showSkills()">Навыки</button></li>
-            <li><button class="button" onclick="toggleSection('contact')">Контакты</button></li>
+            <li><button class="button" onclick="toggleSection('about')">About Me</button></li>
+            <li><button class="button" onclick="toggleSection('experience')">Experience</button></li>
+            <li><button class="button" onclick="showSkills()">Skills</button></li>
+            <li><button class="button" onclick="toggleSection('contact')">Contact</button></li>
         </ul>
     </nav>
 
     <section id="about">
-        <h2>О себе</h2>
+        <h2>About Me</h2>
         <div class="about-container">
             <div class="card">
-                <img src="https://i.postimg.cc/xdTfNX6x/photo-2024-08-18-22-28-51.jpg" alt="Фото Andriy Bodnar" style="width:150px; border-radius: 50%; margin-bottom: 10px;">
-                <p>Я программист с более чем 3-летним опытом работы в различных языках программирования и фреймворках.</p>
-                <p>Я люблю решать сложные задачи и разрабатывать эффективные программные решения. В свободное время увлекаюсь программированием на Python и участием в open-source проектах.</p>
+                <img src="https://i.postimg.cc/xdTfNX6x/photo-2024-08-18-22-28-51.jpg" alt="Photo of Andriy Bodnar" style="width:150px; border-radius: 15px; margin-bottom: 10px;">
+                <p>I am a programmer with over 3 years of experience in various programming languages and frameworks.</p>
+                <p>I love solving complex problems and developing efficient software solutions. In my free time, I enjoy programming in Python and contributing to open-source projects.</p>
             </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2>Опыт работы</h2>
+        <h2>Work Experience</h2>
         <div class="experience-container">
             <div class="card">
-                <h3>Программист - Компания Freelance (2024 - Настоящее время)</h3>
+                <h3>Programmer - Freelance Company (2024 - Present)</h3>
                 <ul>
-                    <li>Разработка веб-приложений на Python и Flask.</li>
-                    <li>Участие в проектировании архитектуры приложения.</li>
-                    <li>Работа с базами данных (SQL и NoSQL).</li>
+                    <li>Development of web applications using Python and Flask.</li>
+                    <li>Participation in application architecture design.</li>
+                    <li>Working with databases (SQL and NoSQL).</li>
                 </ul>
             </div>
             <div class="card">
-                <h3>Младший разработчик - Компании Rekkep (2019 - 2022)</h3>
+                <h3>Junior Developer - Rekkep Company (2019 - 2022)</h3>
                 <ul>
-                    <li>Разработка модулей для веб-приложений.</li>
-                    <li>Тестирование и отладка программного обеспечения.</li>
+                    <li>Development of modules for web applications.</li>
+                    <li>Testing and debugging software.</li>
                 </ul>
             </div>
+        </div>
+        <div class="card">
+            <div class="skillbox-title">SkillBox-Sertifikat</div>
+            <img src="https://i.ibb.co/zNY071Z/photo-2024-08-23-22-34-43.jpg" alt="Experience Image" class="small-image" onclick="openModal(this.src)">
+            <img src="https://i.ibb.co/zPDghGc/photo-2024-08-23-22-34-39.jpg" alt="Experience Image" class="small-image" onclick="openModal(this.src)">
         </div>
     </section>
 
     <section id="skills">
-        <h2>Навыки</h2>
+        <h2>Skills</h2>
         <div class="skill-container">
             <div class="skill">
                 <i class="fab fa-python skill-icon"></i>
@@ -325,9 +106,9 @@
     </section>
 
     <section id="contact">
-        <h2>Контакты</h2>
+        <h2>Contact</h2>
         <p>Email: <a href="mailto:bandriy21@gmail.com" style="color: #fff;">bandriy21@gmail.com</a></p>
-        <p>Телефон: <a href="tel:+393755674141" style="color: #fff;">+39 375 567 4141</a></p>
+        <p>Phone: <a href="tel:+393755674141" style="color: #fff;">+39 375 567 4141</a></p>
         <div class="social-buttons">
             <a href="https://instagram.com/_exefox_" target="_blank">
                 <i class="fab fa-instagram" style="font-size: 30px;"></i>
@@ -344,62 +125,16 @@
         </div>
     </section>
 
-<footer>
-    <p>© 2020-2024 - Все права защищены.</p>
-    <p>Лицензия: MIT | <a href="license/LICENSE.txt" target="_blank" style="color: #fff;">Читать лицензию</a></p>
-</footer>
+    <footer>
+        <p>© 2020-2024 - All rights reserved.</p>
+        <p>License: MIT | <a href="/license/LICENSE.txt" target="_blank" style="color: #fff;">Read the license</a></p>
+    </footer>
 
-    <script>
-        window.onload = function() {
-            const letters = document.querySelectorAll('.logo span');
-            letters.forEach((letter, index) => {
-                setTimeout(() => {
-                    letter.style.opacity = 1;
-                    letter.style.transform = 'translateY(0)';
-                }, index * 300);
-            });
-        };
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
-        function toggleSection(sectionId) {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-
-        function showSkills() {
-            toggleSection('skills');
-
-            // Анимация заполнения навыков
-            const skills = [
-                { id: 'skill-python', width: '90%' },
-                { id: 'skill-flask', width: '80%' },
-                { id: 'skill-js', width: '45%' },
-                { id: 'skill-sql', width: '70%' },
-                { id: 'skill-html', width: '70%' },
-                { id: 'skill-git', width: '65%' },
-                { id: 'skill-linux', width: '60%' }
-            ];
-
-            skills.forEach(skill => {
-                const progressBar = document.getElementById(skill.id);
-                progressBar.style.width = '1%'; // Начальная ширина 1%
-
-                let width = 1; // Начинаем с 1%
-                const targetWidth = parseInt(skill.width); // Конечное значение (например, 90 для 90%)
-
-                // Анимация заполнения прогресс-бара
-                const interval = setInterval(() => {
-                    if (width >= targetWidth) {
-                        clearInterval(interval);
-                    } else {
-                        width++;
-                        progressBar.style.width = width + '%';
-                    }
-                }, 20); // Задержка между итерациями (мс)
-            });
-        }
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
