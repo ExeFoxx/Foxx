@@ -159,15 +159,37 @@ footer {
     color: #FFD700;
 }
 
-.progress {
-    background-color: #007FFF;
-    border-radius: 5px;
-    height: 10px;
+/* Прогресс-бары */
+.progress-bar-container {
+    position: relative;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* Фоновый цвет контейнера */
+    border-radius: 5px; /* Скругление краёв контейнера */
+    height: 15px; /* Высота контейнера */
+    margin-top: 5px; /* Отступ сверху для прогресс-бара */
+}
+
+.progress-bar {
+    height: 100%; /* Высота полосы прогресса */
+    background-color: #007FFF; /* Цвет прогресса по умолчанию (синий) */
+    width: 0%; /* Начальное состояние */
+    transition: width 0.4s ease; /* Плавный переход ширины */
+    border-radius: 5px; /* Скругление краёв полосы прогресса */
+}
+
+/* Цвет при наведении */
+.skill:hover .progress-bar {
+    background-color: #FFD700; /* Изменение цвета на желтый при наведении */
+}
+
+.progress-text {
     position: absolute;
-    bottom: 10px;
-    left: 15px;
-    width: 0;
-    transition: width 0.1s ease;
+    left: 50%; /* Центрируем текст по горизонтали */
+    transform: translateX(-50%); /* Центрируем текст */
+    top: -20px; /* Положение текста относительно полосы */
+    color: #fff; /* Цвет текста */
+    font-weight: bold; /* Жирный текст */
+    font-size: 14px; /* Размер шрифта */
 }
 
 .experience-container {
@@ -182,7 +204,7 @@ footer {
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Отступ снизу для опытного блока */
 }
 
 .card:hover {
@@ -267,7 +289,8 @@ footer {
         width: calc(100% - 20px);
     }
 
-    .experience-container, .about-container {
+    .experience-container,
+    .about-container {
         gap: 10px;
     }
 }
@@ -285,5 +308,5 @@ footer {
 }
 
 .skillbox-certificate {
-    margin-top: 20px; 
+    margin-top: 20px; /* Отступ сверху для сертификата SkillBox */
 }
