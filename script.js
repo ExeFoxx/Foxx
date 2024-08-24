@@ -25,11 +25,14 @@ function toggleSection(sectionId) {
     setTimeout(() => {
         activeSection.classList.add('show');
     }, 10);
+
+    // Если раздел "skills", запустите анимацию прогресса
+    if (sectionId === 'skills') {
+        animateSkills();
+    }
 }
 
-function showSkills() {
-    toggleSection('skills');
-
+function animateSkills() {
     const skills = [
         { id: 'skill-python', width: '90%' },
         { id: 'skill-flask', width: '80%' },
@@ -42,9 +45,9 @@ function showSkills() {
 
     skills.forEach(skill => {
         const progressBar = document.getElementById(skill.id);
-        progressBar.style.width = '1%'; // Начальная ширина 1%
+        progressBar.style.width = '0%'; // Начальная ширина 0%
 
-        let width = 1; // Начальная ширина
+        let width = 0; // Начальная ширина
         const targetWidth = parseInt(skill.width); // Конечное значение
 
         const interval = setInterval(() => {
