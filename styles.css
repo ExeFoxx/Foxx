@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: url("https://media.canva.com/v2/files/uri:ifs%3A%2F%2FM%2F8bb46eb1-27a9-4b2a-afa6-7eb4af747125?csig=AAAAAAAAAAAAAAAAAAAAAHYtNVFYKk3OlT5l_nynngnJ8ZH9-zZljyeE50T_1OkP&exp=1741979385&signer=media-rpc&token=AAIAAU0AJDhiYjQ2ZWIxLTI3YTktNGIyYS1hZmE2LTdlYjRhZjc0NzEyNQAAAAABlZYP_Kjk04wUtQ4jBg7PcbhTApA3-D9WnoXGZAyFxWsddNfCRA") no-repeat center center fixed;
+    background: url("https://www.imgfoto.host/i/C2nG0s") no-repeat center center fixed;
     background-size: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
