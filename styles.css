@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: url("https://miro.medium.com/v2/resize:fit:4800/format:webp/1*JFYnncO-bJblPEox-1B0MA.jpeg") no-repeat center center fixed;
+    background: url("https://miro.medium.com/v2/resize:fit:4800/format:webp/1*taf9WHc3BPmhbxyKEu2jIg.png") no-repeat center center fixed;
     background-size: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -310,6 +310,7 @@ footer {
 .skillbox-certificate {
     margin-top: 20px; /* Отступ сверху для сертификата SkillBox */
 }
+
 
 
 
